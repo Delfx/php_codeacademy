@@ -21,5 +21,5 @@ if (count($array) != count(array_filter($array))) {
 } else if (empty($_GET)) {
     echo '<br> Please fill all fields';
 } else {
-    echo '<br> Success';
+    echo '<br> <h2 style = "color: green"> Your form has been sended we will contact you very soon </h2>';
 }
