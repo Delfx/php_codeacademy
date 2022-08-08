@@ -19,6 +19,7 @@ if (count($array) != count(array_filter($array))) {
         }
     }
 } else if (empty($_GET)) {
+    echo '<br> Please fill all fields';
 } else {
     echo '<br> Success';
 }
