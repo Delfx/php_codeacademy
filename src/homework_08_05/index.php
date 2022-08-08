@@ -7,6 +7,7 @@ $params_needed = [
 ];
 
 $array = $_GET;
+// https://stackoverflow.com/a/29120652
 
 if(count($array) != count(array_filter($array))){
     foreach ($params_needed as $value) {
