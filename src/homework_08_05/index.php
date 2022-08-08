@@ -5,7 +5,7 @@ require "index.phtml";
 $params_needed = [
     'first_name' => 'Vardas',
     'last_name' => 'Pavarde',
-    'additional_information' => 'Papildomas Tekstas'
+    'additional_information' => 'Papildomas Informacija'
 ];
 
 // https://stackoverflow.com/a/35665021
