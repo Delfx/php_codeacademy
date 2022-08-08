@@ -6,8 +6,9 @@ $params_needed = [
     'first_name', 'last_name', 'additional_information'
 ];
 
+// https://stackoverflow.com/a/35665021
+
 $array = $_GET;
-// https://stackoverflow.com/a/29120652
 
 if(count($array) != count(array_filter($array))){
     foreach ($params_needed as $value) {
