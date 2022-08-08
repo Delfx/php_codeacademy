@@ -3,9 +3,9 @@
 require "index.phtml";
 
 $params_needed = [
-    'first_name' => 'First Name',
-    'last_name' => 'Last Name',
-    'additional_information' => 'Additional information'
+    'first_name' => 'Vardas',
+    'last_name' => 'Pavarde',
+    'additional_information' => 'Papildomas Tekstas'
 ];
 
 // https://stackoverflow.com/a/35665021
