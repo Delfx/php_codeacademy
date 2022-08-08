@@ -3,7 +3,7 @@
 require "index.phtml";
 
 $params_needed = [
-    "first_name", "last_name",
+    'first_name', 'last_name', 'additional_information'
 ];
 
 $array = $_GET;
