@@ -3,8 +3,8 @@
 require "index.phtml";
 
 $params_needed = [
-    'first_name' => 'First Name', 
-    'last_name' => 'Last Name', 
+    'first_name' => 'First Name',
+    'last_name' => 'Last Name',
     'additional_information' => 'Additional information'
 ];
 
@@ -12,12 +12,13 @@ $params_needed = [
 
 $array = $_GET;
 
-if(count($array) != count(array_filter($array))){
+if (count($array) != count(array_filter($array))) {
     foreach ($params_needed as $key => $value) {
         if (empty($_GET["{$key}"])) {
             echo "<br> Please fill field {$value} <br>";
         }
     }
-}else{
+} else if (empty($_GET)) {
+} else {
     echo '<br> Success';
 }
