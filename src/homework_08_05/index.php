@@ -15,5 +15,5 @@ if(count($array) != count(array_filter($array))){
         }
     }
 }else{
-    echo 'success';
+    echo '<br> Success';
 }
