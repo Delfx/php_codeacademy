@@ -1,30 +1,30 @@
 <?php
 
-require "index.phtml";
+// $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+$decoded = [];
 
-$paramsNeeded = [
-    'first_name' => 'Vardas',
-    'last_name' => 'Pavarde',
-    'additional_information' => 'Papildomas Informacija',
-];
- 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  //Receive the RAW post data.
 
-// https://stackoverflow.com/a/35665021
+  http_response_code(200);
 
-$array = $_GET;
+  echo (json_encode(['message' => 'User saved successfully', 'data' => $_POST]));
 
-if (count($array) != count(array_filter($array))) {
-    foreach ($paramsNeeded as $key => $value) {
-        if (empty($_GET["{$key}"])) {
-            echo "<br> Prašau užpildikite lauką {$value} <br>";
-        }
-    }
-} 
-else if (empty($_GET)) {
-    echo '<br> Užpildykite visus laukus';
-} else {
-    echo '<br> <h2 style = "color: green"> Forma sėkmingai išsiųsta </h2>';
+  // require_once 'views/text.phtml';
+
+  exit;
+
+  //If json_decode failed, the JSON is invalid.
+  if (!is_array($decoded)) {
+    // echo json_encode(['message' => 'User saved successfully']);
+    exit;
+  } else {
+    // echo json_encode(['message' => 'User saved successfully']);
+    exit;
+  }
 }
 
 
-// var_dump(isset($_GET['lang'])); 
+
+
+require_once 'views/index.phtml';

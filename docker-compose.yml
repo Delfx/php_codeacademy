@@ -9,14 +9,22 @@ services:
       - ./src:/var/www
       - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - 8085:80
+      - 80:80
     depends_on:
       - php
 
   php:
     container_name: ca-php
-    image: php:8.1.1-fpm-alpine3.15
+    # image: php:8.1.1-fpm-alpine3.15
+    build: ./docker/php/
     working_dir: /var/www
     volumes:
       - ./src:/var/www
     # tty: true
+
+  # composer_installation:
+  #   container_name: composer_installation
+  #   image: composer
+  #   volumes:
+  #     - ./src:/app
+  #   command: composer install --ignore-platform-reqs
