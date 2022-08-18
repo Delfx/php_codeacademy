@@ -1,2 +1,2 @@
 ### 
-Folder for iamge generated files
+Folder for image generated files
