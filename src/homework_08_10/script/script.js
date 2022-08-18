@@ -10,6 +10,7 @@ let lang = [];
 
 btn?.addEventListener('click', async (e) => {
     e.preventDefault();
+
     const formData = new FormData(form);
     let response = await fetch(window.location.href, {
         method: 'POST',

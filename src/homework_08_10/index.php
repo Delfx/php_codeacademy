@@ -56,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
   } else {
     echo (json_encode(['message' => 'Užpildykite visus laukus', 'imgError' => $errors, 'isset' => empty($_FILES['image']['name'])]));
-    // echo json_encode(json_decode('{ "message": "value with whitespaces to maintain" }'));
     exit;
   }
 }
