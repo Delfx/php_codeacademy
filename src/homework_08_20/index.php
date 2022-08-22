@@ -15,15 +15,13 @@ function generateRandomString($length = 6)
     for ($i = 0; $i < $length; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
-
     return $randomString;
 }
 
 
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $getPost =  json_decode(file_get_contents('php://input'), true);
-    // print_r(count($getPost['results']));
+    $randomName = generateRandomString();
 
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
@@ -36,8 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $sheet->setCellValue('G1', 'login.username');
 
     for ($i = 0; $i < count($getPost['results']); $i++) {
-
-
         $cellNumber = 2 + $i;
 
         $sheet->setCellValue('A' . $cellNumber, $getPost['results'][$i]['gender']);
@@ -50,17 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
     $writer = new Xlsx($spreadsheet);
-    $writer->save('xlsx/' . generateRandomString() . '.xlsx');
+    $writer->save('xlsx/' .  $randomName . '.xlsx');
 
-    echo json_encode(['message' => 'message']);
+    echo json_encode(['file' =>  'xlsx/' . $randomName . '.xlsx']);
     exit;
 }
-
-
-
-
-
-
 
 
 require('view/index.phtml');

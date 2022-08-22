@@ -2,6 +2,7 @@ let jsonData = document.getElementById('data').textContent;
 
 const button = document.querySelector('#getDataButton');
 const text = document.getElementById('text');
+const downloadLink = document.getElementById('downloadLink');
 const arrayOfUsers = 10;
 
 
@@ -19,17 +20,6 @@ button?.addEventListener('click', async (e) => {
     e.preventDefault();
     let userArray = await fetchRandomUser();
 
-    // const mydata = JSON.parse(users);
-
-
-
-    // let formData = new FormData();
-    // formData.append('json', userArray);
-    // formData.append('json', 'test');
-    
-    // console.log(formData);
-
-
     let response = await fetch(window.location.href, {
         method: 'POST',
         headers: {
@@ -40,7 +30,12 @@ button?.addEventListener('click', async (e) => {
     });
 
     let result = await response.json();
-    console.log(result);
+
+    downloadLink?.setAttribute('href', result.file)
+    downloadLink?.parentElement.classList.remove('d-none');
+
+
+    // console.log(result);
 })
 
 
