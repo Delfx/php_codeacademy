@@ -24,9 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     // $context = stream_context_create(array('http' => array('ignore_errors' => true)));
     // $json = file_get_contents("https://randomuser.me/api/?results=10", false, $context);
-    $getPost =  json_decode(file_get_contents('https://randomuser.me/api/?results=10'), true);
+    $getFromClickData =  json_decode(file_get_contents('php://input'));
+    $getPost =  json_decode(file_get_contents('https://randomuser.me/api/?results=' . $getFromClickData), true);
 
-    // var_dump($getPost);
+    // var_dump($getFromClickData);
 
     // if ($getPost === null) {
     //     $message = 'server error';
