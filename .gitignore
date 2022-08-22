@@ -1,6 +1,15 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,phpstorm
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,phpstorm
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,phpstorm,macos,composer
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,phpstorm,macos,composer
+
+### Composer ###
+composer.phar
+/vendor/
+vendor
+
+# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
 
 ### macOS ###
 # General
@@ -40,6 +49,7 @@ Temporary Items
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
+.idea
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
@@ -53,7 +63,6 @@ Temporary Items
 .idea/**/contentModel.xml
 
 # Sensitive or high-churn files
-.idea
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.local.xml
@@ -174,7 +183,7 @@ fabric.properties
 # Ignore code-workspaces
 *.code-workspace
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,phpstorm
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,phpstorm,macos,composer
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
