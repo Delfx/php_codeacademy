@@ -1,6 +1,4 @@
 <?php
-
-
 require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -20,7 +18,7 @@ function generateRandomString($length = 6)
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $getPost =  json_decode(file_get_contents('php://input'), true);
+    $getPost =  json_decode(file_get_contents('https://randomuser.me/api/?results=10'), true);
     $randomName = generateRandomString();
 
     $spreadsheet = new Spreadsheet();
