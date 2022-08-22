@@ -1,8 +1,11 @@
 <?php
+error_reporting(E_ALL ^ E_DEPRECATED);
+
 require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 
 
 function generateRandomString($length = 6)
@@ -18,7 +21,19 @@ function generateRandomString($length = 6)
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    // $context = stream_context_create(array('http' => array('ignore_errors' => true)));
+    // $json = file_get_contents("https://randomuser.me/api/?results=10", false, $context);
     $getPost =  json_decode(file_get_contents('https://randomuser.me/api/?results=10'), true);
+
+    // var_dump($getPost);
+
+    // if ($getPost === null) {
+    //     $message = 'server error';
+    //     echo json_encode(['message' =>  $message]);
+    //     exit;
+    // }
+
     $randomName = generateRandomString();
 
     $spreadsheet = new Spreadsheet();
@@ -46,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $writer = new Xlsx($spreadsheet);
     $writer->save('xlsx/' .  $randomName . '.xlsx');
 
-    echo json_encode(['file' =>  'xlsx/' . $randomName . '.xlsx']);
+    echo json_encode(['fileName' =>  'xlsx/' . $randomName . '.xlsx']);
     exit;
 }
 
