@@ -6,8 +6,6 @@ require '../vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-
-
 function generateRandomString($length = 6)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -19,44 +17,30 @@ function generateRandomString($length = 6)
     return $randomString;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    // $context = stream_context_create(array('http' => array('ignore_errors' => true)));
-    // $json = file_get_contents("https://randomuser.me/api/?results=10", false, $context);
     $getFromClickData =  json_decode(file_get_contents('php://input'));
     $getPost =  json_decode(file_get_contents('https://randomuser.me/api/?results=' . $getFromClickData), true);
 
-    // var_dump($getFromClickData);
-
-    // if ($getPost === null) {
-    //     $message = 'server error';
-    //     echo json_encode(['message' =>  $message]);
-    //     exit;
-    // }
+    $it = new RecursiveIteratorIterator(new RecursiveArrayIterator($getPost['results'][0]));
+    $keyArray = [];
+    foreach ($it as $key => $value) {
+        $keyArray[] = $key;
+    }
 
     $randomName = generateRandomString();
-
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
-    $sheet->setCellValue('A1', 'Gender');
-    $sheet->setCellValue('B1', 'name.title');
-    $sheet->setCellValue('C1', 'name.first');
-    $sheet->setCellValue('D1', 'name.last');
-    $sheet->setCellValue('E1', 'location.city');
-    $sheet->setCellValue('F1', 'email');
-    $sheet->setCellValue('G1', 'login.username');
+
+    $sheet->fromArray([$keyArray], NULL, 'A1');
 
     for ($i = 0; $i < count($getPost['results']); $i++) {
-        $cellNumber = 2 + $i;
-
-        $sheet->setCellValue('A' . $cellNumber, $getPost['results'][$i]['gender']);
-        $sheet->setCellValue('B' . $cellNumber, $getPost['results'][$i]['name']['title']);
-        $sheet->setCellValue('C' . $cellNumber, $getPost['results'][$i]['name']['first']);
-        $sheet->setCellValue('D' . $cellNumber, $getPost['results'][$i]['name']['last']);
-        $sheet->setCellValue('E' . $cellNumber, $getPost['results'][$i]['location']['city']);
-        $sheet->setCellValue('F' . $cellNumber, $getPost['results'][$i]['email']);
-        $sheet->setCellValue('G' . $cellNumber, $getPost['results'][$i]['login']['username']);
+        $sheetCell = $i + 2;
+        $result = [];
+        array_walk_recursive($getPost['results'][$i], function ($value, $key) use (&$result) {
+                $result[] = $value;
+        });
+        $sheet->fromArray([$result], NULL, 'A' . $sheetCell);
     }
 
     $writer = new Xlsx($spreadsheet);
