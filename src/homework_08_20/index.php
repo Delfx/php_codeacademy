@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $getFromClickData =  json_decode(file_get_contents('php://input'));
     $getPost =  json_decode(file_get_contents('https://randomuser.me/api/?results=' . $getFromClickData), true);
 
+    // https://stackoverflow.com/a/1320259
     $it = new RecursiveIteratorIterator(new RecursiveArrayIterator($getPost['results'][0]));
     $keyArray = [];
     foreach ($it as $key => $value) {
@@ -37,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     for ($i = 0; $i < count($getPost['results']); $i++) {
         $sheetCell = $i + 2;
         $result = [];
+        // https://stackoverflow.com/a/51840483
         array_walk_recursive($getPost['results'][$i], function ($value, $key) use (&$result) {
                 $result[] = $value;
         });
