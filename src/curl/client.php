@@ -15,7 +15,6 @@ $obj = json_decode($result, true);
 $post = $result;
 
 var_dump($obj['results']);
-// var_dump($obj['results'][0]['name']['first']);
 
 try {
     $chPost = curl_init();
@@ -34,7 +33,3 @@ try {
     var_dump($response);
 
 }
-// var_dump($server_output );
-
-// Further processing ...
-// if ($server_output == "OK") { ... } else { ... }
