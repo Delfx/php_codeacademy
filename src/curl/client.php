@@ -14,7 +14,7 @@ $obj = json_decode($result, true);
 // set post fields
 $post = $result;
 
-var_dump($obj['results']);
+// var_dump($obj['results']);
 
 try {
     $chPost = curl_init();
@@ -24,12 +24,13 @@ try {
     curl_setopt($chPost, CURLOPT_POST, true);
     curl_setopt($chPost, CURLOPT_POSTFIELDS, $post);
 
-    $response = curl_exec($chPost);
-    if ($response === false) throw new Exception(curl_error($chPost), curl_errno($chPost));
+    curl_exec($chPost);
+    // if ($response === false) throw new Exception(curl_error($chPost), curl_errno($chPost));
     curl_close($chPost);
+
+    // var_dump($response);
 
 } catch (Exception $e) {
     $response = 'Curl failed with error ' . $e->getCode() . ' ' . $e->getMessage();
     var_dump($response);
-
 }
