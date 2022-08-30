@@ -2,12 +2,10 @@
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    var_dump($_POST);
-    $myfile = fopen("./users/newfile.json", "a");
-    fwrite($myfile, $txt);
+    $decode = json_decode(file_get_contents('php://input'), true);
+    $myfile = fopen('./users/'. $decode['results'][0]['name']['first'] . '.json', "w");
+    fwrite($myfile, json_encode($_POST));
     fclose($myfile);
-    var_dump($_POST);
-}
 
-var_dump($_POST);
+    echo 'OK';
+}
