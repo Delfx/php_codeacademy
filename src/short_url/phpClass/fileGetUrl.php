@@ -1,5 +1,7 @@
 <?php
 
+// session_start();
+
 class Url
 {
     public $url;
@@ -8,7 +10,7 @@ class Url
   
     public function addToJsonFile ($url, $arr){
         $arr[] = json_decode(json_encode($this->url = $url), true);
-        file_put_contents(dirname(__DIR__) . '/files/url.json', json_encode($arr));
+        file_put_contents(dirname(__DIR__) . '/files/' . $_SESSION['user'] . '.json'  , json_encode($arr));
     }
 
     public function setURL($url)
@@ -17,8 +19,9 @@ class Url
         $dt = new DateTime();
         $date = $dt->format('H:i:s');
 
-        if (file_exists('./files/url.json')) {
-            $str = file_get_contents(dirname(__DIR__) . '/files/url.json', true);
+        if (file_exists(dirname(__DIR__) . '/files/' . $_SESSION['user'] . '.json')) {
+
+            $str = file_get_contents(dirname(__DIR__) . '/files/' . $_SESSION['user'] . '.json', true);
             $arr = json_decode($str, true);
 
             if (count($arr) >= 10) {
@@ -44,11 +47,14 @@ class Url
             return json_encode([
                 'message' => $url['shortCode'],
                 'response' => 'success',
+                'error' => 'err'
             ]);
             exit;
         }
 
-        $str = fopen(dirname(__DIR__) . '/short_url/files/url.json', true);
+        $myfile = fopen(dirname(__DIR__) . '/files/' . $_SESSION['user'] . '.json', "w");
+        fclose($myfile);
+        $str = file_get_contents(dirname(__DIR__) . '/files/' . $_SESSION['user'] . '.json');
         $arr = json_decode($str, true);
 
         $this -> addToJsonFile($url, $arr);

@@ -16,12 +16,22 @@
 </head>
 
 <body>
+
+    <div class="container">
+        <nav class="navbar">
+            <form method="post" class="form-inline" action="logout.php">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </nav>
+    </div>
+
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="container">
             <div class="col-xxl-8 offset-xxl-2">
                 <div class="search">
                     <i class="fa fa-search"></i>
-                    <input type="text" id="inputUrl" class="form-control" placeholder="Short URL" value="https://www.google.com/">
+                    <input type="text" id="inputUrl" class="form-control" placeholder="Short URL"
+                        value="https://www.google.com/">
                     <button id="buttonUrl" class="btn btn-primary">Search</button>
                 </div>
             </div>

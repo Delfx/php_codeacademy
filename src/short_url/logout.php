@@ -2,7 +2,7 @@
 
 session_start();
 
-var_dump($_SESSION);
-
 session_destroy();
-// ob_end_flush();
+
+header('Location: /short_url/login.php');
+
