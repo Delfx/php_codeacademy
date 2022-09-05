@@ -1,6 +1,9 @@
 <?php
 
-$str = file_get_contents(dirname(__DIR__) . '/short_url/files/url.json', true);
+
+session_start();
+
+$str = file_get_contents(dirname(__DIR__) . '/short_url/files/' .  $_SESSION['user'] . '.json', true);
 $arr = json_decode($str, true);
 
 $url_components = parse_url("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");

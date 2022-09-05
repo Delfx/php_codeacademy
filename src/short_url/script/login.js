@@ -17,9 +17,10 @@ loginButton.addEventListener('click', async (e) => {
 
     if (result.code == 200) {
         window.location.replace(result.url);
+    }else{
+        errorLabel.innerText = 'User Name or Password Incorrect'
     }
 
-    errorLabel.innerText = 'User Name or Password Incorrect'
 
 })
 

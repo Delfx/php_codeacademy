@@ -15,7 +15,7 @@ if (isset($_SESSION['user'])) {
         for ($i = 0; $i < $length; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
-        return "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]short.php?code=" . $randomString;
+        return "http://$_SERVER[HTTP_HOST]/short_url/short.php?code=" . $randomString;
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
