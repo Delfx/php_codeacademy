@@ -9,7 +9,7 @@ class Url
 
   
     public function addToJsonFile ($url, $arr){
-        $arr[] = json_decode(json_encode($this->url = $url), true);
+        $arr[] = $url;
         file_put_contents(dirname(__DIR__) . '/files/' . $_SESSION['user'] . '.json'  , json_encode($arr));
     }
 
@@ -32,36 +32,23 @@ class Url
                     return json_encode([
                         'message' => 'Please wait for ' . 60 - ($timeCompare * 60) . 's',
                     ]);
-                    exit;
                 }
-                $this -> addToJsonFile($url, $arr);
-
-                return json_encode([
-                    'message' => $url['shortCode'],
-                    'response' => 'success',
-                ]);
-                exit;
             }
+            $this -> addToJsonFile($url, $arr);
+            return json_encode([
+                'message' => $url['shortCode'],
+                'response' => 'success',
+            ]);
+        }else{
+            $arr = [];
             $this -> addToJsonFile($url, $arr);
 
             return json_encode([
                 'message' => $url['shortCode'],
                 'response' => 'success',
-                'error' => 'err'
             ]);
-            exit;
         }
 
-        $myfile = fopen(dirname(__DIR__) . '/files/' . $_SESSION['user'] . '.json', "w");
-        fclose($myfile);
-        $str = file_get_contents(dirname(__DIR__) . '/files/' . $_SESSION['user'] . '.json');
-        $arr = json_decode($str, true);
-
-        $this -> addToJsonFile($url, $arr);
-
-        return json_encode([
-            'message' => $url['shortCode'],
-            'response' => 'success',
-        ]);
+       
     }
 }

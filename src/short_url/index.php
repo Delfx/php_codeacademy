@@ -38,7 +38,7 @@ if (isset($_SESSION['user'])) {
 
                 $addLink = new Url();
                 echo $addLink->setURL($url);
-
+                
                 exit;
             } else {
                 echo json_encode([
