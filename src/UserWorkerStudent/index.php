@@ -5,23 +5,27 @@ require('./Worker.php');
 require('./Student.php');
 require('./Driver.php');
 
-$WorkerToken = new Student('Token', 21);
+$workerToken = new Worker('Token', 21);
+$workerToken->setSalary(300);
+echo('Name: ' . $workerToken->getName() . '; Salary: ' . $workerToken->getSalary() . ' Eur ' . '<br>');
 
 
 
-$StudentKyle = new Student('Kyle', 21);
+
+$studentKyle = new Student('Kyle', 21);
+$studentKyle->setScholarship(200);
+$studentKyle->setCourse(2);
+echo('Name: ' . $studentKyle->getName() . '; Scholarship: ' . $studentKyle->getScholarship() . ' Eur; ' . 'Course: ' . $studentKyle->getCourse() . '<br>');
 
 
 $driverMike = new Driver('Mike', 32);
 $driverMike->setSalary(300.2);
 $driverMike->setDrivingLicense(['A', 'B']);
-var_dump($driverMike->getDrivingLicense());
-var_dump($driverMike->getSalary());
+$driverLicense = $driverMike->getDrivingLicense();
+echo('Name: ' . $driverMike->getName() . '; Salary: ' . $driverMike->getSalary() . ' Eur; ' . 'Driver license: ' . implode(", ",$driverLicense));
 
 
 
 
 
 
-
-// var_dump($driverMike);
