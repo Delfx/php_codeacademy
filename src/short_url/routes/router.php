@@ -4,5 +4,5 @@ $moduleLink = $_GET['models'] ?? 'index.php';
 
 
 if ($moduleLink == 'logout') {
-    header('Location: /short_url/models/logout.php');
+    include_once('../models/logout.php');
 }
