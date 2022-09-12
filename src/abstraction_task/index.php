@@ -1,6 +1,9 @@
 <?php
 
 require('./Person.php');
+require('./Programmer.php');
+require('./Student.php');
+require('./Teacher.php');
 
 $programmer = new Programmer('Eric');
 echo $programmer->getValue() . '<br>';
