@@ -12,6 +12,7 @@ RUN apk add --update \
 	&& docker-php-ext-configure gd --with-jpeg --with-freetype \
 	&& docker-php-ext-install gd
 
+
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
