@@ -4,7 +4,7 @@ require_once __DIR__.'/vendor/autoload.php';
 
 use App\Services;
 
-$form = new Services\FormBuilder('data');
+$form = new Services\FormBuilder;
 
 // var_dump($form->getData());
  
