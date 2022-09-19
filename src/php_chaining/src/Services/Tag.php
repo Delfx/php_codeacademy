@@ -5,9 +5,9 @@ namespace App\Services;
 class Tag
 {
 
-    public $text;
-    public $href;
-    public $link;
+    private $text;
+    private $href;
+    private $link;
 
     public function __construct(public string $tag) {
         $this->tag = $tag;
@@ -48,6 +48,8 @@ class Tag
     {
         return "<{$this->tag} {$this->href}='{$this->link}'>{$this->text}</{$this->tag}>";
     }
+
+   
 }
 
 
