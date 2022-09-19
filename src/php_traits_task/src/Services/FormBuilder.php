@@ -4,7 +4,7 @@ namespace App\Services;
 
 class FormBuilder
 {
-    use CloseTraits, OpenTraits, CustomFormsTraits;
+    use Traits\CloseTraits, Traits\OpenTraits, Traits\CustomFormsTraits;
 
 
     public function password(string $value, string $inputId = null)

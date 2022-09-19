@@ -17,6 +17,6 @@ echo $form->textarea('Enter text');
 echo $form->password('Enter password');
 
 echo $form->submit('go');
-echo $form->close('index.php', 'POST');
+echo $form->close();
 
 
