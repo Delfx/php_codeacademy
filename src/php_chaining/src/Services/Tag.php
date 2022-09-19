@@ -12,6 +12,8 @@ class Tag
         $this->tag = $tag;
     }
 
+    
+
     /**
      * Set the value of text
      *
