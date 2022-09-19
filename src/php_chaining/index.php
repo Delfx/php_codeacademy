@@ -6,7 +6,7 @@ use App\Services\Tag;
 
 $tag = new Tag('a');
  
-$tag->setText('title')->setAttr('href', 'index.html')->show(); 
+$tag->setText('title')->setAttr('href', 'index.html')->setAttr('style', 'color: black')->show(); 
 // prints <a href="index.html">title</a>
 
 echo "<br>";

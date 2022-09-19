@@ -6,8 +6,7 @@ class Tag
 {
 
     private $text;
-    private $href;
-    private $link;
+    public $attr = [];
 
     public function __construct(public string $tag) {
         $this->tag = $tag;
@@ -30,26 +29,27 @@ class Tag
      *
      * @return  self
      */ 
-    public function setAttr($href, $link)
+    public function setAttr($attr, $property)
     {
-        $this->href = $href;
-        $this->link = $link;
-
+        $this->attr[$attr] = $property;
         return $this;
     }
 
 
     public function show()
     {
-        print "<{$this->tag} {$this->href}='{$this->link}'>{$this->text}</{$this->tag}>";
+        print $this->get();
     }
 
     public function get()
     {
-        return "<{$this->tag} {$this->href}='{$this->link}'>{$this->text}</{$this->tag}>";
+        $attr = '';
+        foreach ($this->attr as $key => $value) {
+            $attr .= sprintf(' %s="%s"', $key, $value);
+        }
+        $this->attr = [];
+        return "<{$this->tag} {$attr}>{$this->text}</{$this->tag}>";
     }
-
-   
 }
 
 
