@@ -12,8 +12,6 @@ class Tag
         $this->tag = $tag;
     }
 
-    
-
     /**
      * Set the value of text
      *
@@ -37,17 +35,16 @@ class Tag
         return $this;
     }
 
-
     public function show()
     {
         print $this->get();
     }
-
+    
     public function get()
     {
         $attr = '';
         foreach ($this->attr as $key => $value) {
-            $attr .= sprintf(' %s="%s"', $key, $value);
+            $attr .= sprintf(" %s='%s'", $key, $value);
         }
         $this->attr = [];
         return "<{$this->tag} {$attr}>{$this->text}</{$this->tag}>";
