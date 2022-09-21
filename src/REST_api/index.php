@@ -1,14 +1,15 @@
 <?php 
-
-require_once __DIR__ . '/vendor/autoload.php';
+// var_dump($_SERVER);
+// exit;
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $router = new AltoRouter();
 
-$router->setBasePath('/REST_api');
+// $router->setBasePath('/REST_api');
 
 // map homepage
 $router->map( 'GET', '/', function() {
-	require __DIR__ . '/src/views/home.php';
+	require __DIR__ . '/../src/views/home.php';
 });
 
 
@@ -23,7 +24,7 @@ $router->map( 'GET', '/store/order/[:id]/', function($id) {
 
 
 $router->map( 'DELETE', '/store/order/[i:id]/', function($id) {
-	require __DIR__ . '/src/views/deleted.php';
+	require __DIR__ . '/../src/views/deleted.php';
 });
 
 
@@ -34,15 +35,15 @@ $router->map( 'POST', '/user', function() {
 });
 
 $router->map( 'GET', '/user/[i:id]/', function($id) {
-    require __DIR__ . '/src/views/user.php';
+    require __DIR__ . '/../src/views/user.php';
 });
 
 $router->map( 'PUT', '/user/[i:id]/', function($id) {
-    require __DIR__ . '/src/views/userUpdate.php';
+    require __DIR__ . '/../src/views/userUpdate.php';
 });
 
 $router->map( 'DELETE', '/user/[i:id]/', function($id) {
-    require __DIR__ . '/src/views/userUpdate.php';
+    require __DIR__ . '/../src/views/userUpdate.php';
 });
 
 
