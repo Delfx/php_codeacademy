@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 use App\Classes;
@@ -9,16 +9,15 @@ $tag = new Classes\HtmlElementGeneratorClass();
 $quizJson = file_get_contents(ROOT . 'json/quiz.json');
 $quizJsonDecode = json_decode($quizJson, true);
 
-echo $htmlBody->htmlHeader();
-echo $tag->setAttr('method', 'POST')->setAttr('id', 'form')->formOpen();
+// echo $htmlBody->htmlHeader();
+// echo $tag->setAttr('method', 'POST')->setAttr('id', 'form')->formOpen();
 
-echo $tag->setTag('h3')->setText($quizJsonDecode[0]['question'])->show();
-foreach ($quizJsonDecode[0]['choices'] as $key => $value) {
-    echo $tag->radiosGeneration(htmlspecialchars($value), $key + 1);
-}
+// echo $tag->setTag('h3')->setText($quizJsonDecode[0]['question'])->show();
+// foreach ($quizJsonDecode[0]['choices'] as $key => $value) {
+//     echo $tag->radiosGeneration(htmlspecialchars($value), $key + 1);
+// }
 
-var_dump(getallheaders());
-
+$_POST['question'];
 
 
 
@@ -35,7 +34,6 @@ var_dump(getallheaders());
 // }
 
 
-echo $tag->setTag('Button')->setAttr('type', 'submit')->setAttr('class', 'mt-3 btn btn-primary submitButton')->setText('Button')->get();
-echo $tag->formClose();
+// echo $tag->setTag('Button')->setAttr('type', 'submit')->setAttr('class', 'mt-3 btn btn-primary submitButton')->setText('Button')->get();
+// echo $tag->formClose();
 echo $htmlBody->htmlFooter();
-

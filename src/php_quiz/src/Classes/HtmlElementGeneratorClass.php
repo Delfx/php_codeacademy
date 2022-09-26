@@ -27,7 +27,7 @@ class HtmlElementGeneratorClass
 
     public function formClose()
     {
-        return "</form";
+        return "</form>";
     }
 
     public function radiosGeneration(string $radiosName,int $valueNumber){
