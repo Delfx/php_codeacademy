@@ -3,7 +3,7 @@
 namespace App\Classes;
 
 
-class FormGenerator{
+class FormGeneratorClass{
 
 
     

@@ -3,7 +3,7 @@
 
 use App\Classes;
 
-$htmlBody = new Classes\HTMLBodyClass();
+$htmlBody = new Classes\HtmlBodyClass();
 $tag = new Classes\HtmlElementGeneratorClass();
 
 $quizJson = file_get_contents(ROOT . 'json/quiz.json');
