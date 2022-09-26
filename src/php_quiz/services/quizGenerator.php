@@ -10,12 +10,15 @@ $quizJson = file_get_contents(ROOT . 'json/quiz.json');
 $quizJsonDecode = json_decode($quizJson, true);
 
 echo $htmlBody->htmlHeader();
-echo $tag->setAttr('method', 'POST')->formOpen();
+echo $tag->setAttr('method', 'POST')->setAttr('id', 'form')->formOpen();
 
 echo $tag->setTag('h3')->setText($quizJsonDecode[0]['question'])->show();
 foreach ($quizJsonDecode[0]['choices'] as $key => $value) {
     echo $tag->radiosGeneration(htmlspecialchars($value), $key + 1);
 }
+
+var_dump(getallheaders());
+
 
 
 
@@ -36,6 +39,3 @@ echo $tag->setTag('Button')->setAttr('type', 'submit')->setAttr('class', 'mt-3 b
 echo $tag->formClose();
 echo $htmlBody->htmlFooter();
 
-header('Content-Type: application/json; charset=utf-8');
-echo json_encode($quizJsonDecode);
-exit;
